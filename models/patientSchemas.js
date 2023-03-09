@@ -9,7 +9,6 @@ const patientSchema = new mongoose.Schema({
     dateOfBirth: String,
     phoneNumber: String,
     emailAddress: String,
-    emergencyContact: String,
     symptom:String
   })
 
