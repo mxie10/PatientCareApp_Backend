@@ -12,4 +12,17 @@ const patientSchema = new mongoose.Schema({
     symptom:String
   })
 
+
+  const patientClinicalRecordSchema = new mongoose.Schema({
+      patientId: String,
+      bloodPressure: String,
+      repositoryRate: String,
+      bloodOxygenLevel: String,
+      heartBeatRate: String,
+      isInCriticalCondition: String,
+      date:String,
+      comment: String
+  })
+
 export const PatientSchema = mongoose.model('PatientSchema',patientSchema);
+export const PatientClinicalRecordSchema = mongoose.model('PatientClinicalRecordSchema',patientClinicalRecordSchema);
