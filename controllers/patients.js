@@ -26,7 +26,7 @@ export const addPatients = async (req, res) => {
     const newPatient = new PatientSchema(patient);
     try {
         await newPatient.save();
-        res.status(201).json(newPatient);
+        res.status(200).json(newPatient);
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
@@ -37,7 +37,7 @@ export const createClinicalRecord = async (req, res) => {
     const newClinicalRecord = new PatientClinicalRecordSchema(clinicalRecord);
     try {
         await newClinicalRecord.save();
-        res.status(201).json(newClinicalRecord);
+        res.status(200).json(newClinicalRecord);
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
