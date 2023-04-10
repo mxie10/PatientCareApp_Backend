@@ -31,6 +31,27 @@ export const getPatientByName = async (req,res) => {
     }
 }
 
+export const getPatientByID = async (req,res) => {
+    try{
+        console.log(req.query.id);
+        const patients = await PatientSchema.find({_id:req.query.id});
+        res.status(200).json(patients);
+    }catch(error){
+        res.status(404).json({ message: error.message });
+    }
+}
+
+
+export const getCriticalPatient = async (req,res) => {
+    try{
+        const patients = await PatientClinicalRecordSchema.find({isInCriticalCondition:req.query.condition});
+        console.log(patients);
+        res.status(200).json(patients);
+    }catch(error){
+        res.status(404).json({ message: error.message });
+    }
+}
+
 export const addPatients = async (req, res) => {
     const patient = req.body;
     const newPatient = new PatientSchema(patient);
@@ -44,6 +65,7 @@ export const addPatients = async (req, res) => {
 
 export const createClinicalRecord = async (req, res) => {
     const clinicalRecord = req.body;
+    console.log(clinicalRecord);
     const newClinicalRecord = new PatientClinicalRecordSchema(clinicalRecord);
     try {
         await newClinicalRecord.save();
